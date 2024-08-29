@@ -1,5 +1,13 @@
+<script setup lang="ts">
+import { navigationMenuTriggerStyle } from '../ui/navigation-menu';
+</script>
+
 <template>
   <Header>
-    En header
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/" :class="navigationMenuTriggerStyle()">
+        En header
+      </NavigationMenuLink>
+    </NavigationMenuItem>
   </Header>
 </template>

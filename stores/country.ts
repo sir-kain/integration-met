@@ -4,7 +4,6 @@ import type { Country } from "~/types/country";
 
 type stateType = {
   activeCountry: Country;
-  // headerComponentName: ComputedRef<string>;
   countries: Country[];
 };
 
@@ -12,16 +11,16 @@ export const useCountryStore = defineStore("country", {
   state: (): stateType => {
     return {
       activeCountry: {
-        code: "FR",
-        name: "France",
+        code: "IT",
+        name: "Italia",
       },
       countries,
     };
   },
   actions: {
-    setActiveOrganisation(countryCode?: Country["code"]) {
+    setActiveCountry(countryCode?: Country["code"]) {
       this.activeCountry = this.countries.find(
-        (country) => country.code === countryCode || "IT"
+        (country) => country.code === (countryCode || "IT")
       )!;
     },
 
@@ -33,9 +32,8 @@ export const useCountryStore = defineStore("country", {
     activeCountryCode: (state) => state.activeCountry.code,
     headerComponentName: (state) => {
       const countryCode = state.activeCountry.code;
-      return `Header${
-        countryCode.charAt(0).toUpperCase() + countryCode.slice(1).toLowerCase()
-      }`;
+      return `Header${countryCode.charAt(0).toUpperCase() + countryCode.slice(1).toLowerCase()
+        }`;
     },
   },
 });
